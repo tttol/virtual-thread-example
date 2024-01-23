@@ -1,19 +1,32 @@
 package io.github.tttol.virtualthreadexample.controller;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import io.github.tttol.virtualthreadexample.service.VirtualThreadsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
+
+@RestController
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping("index")
+@RequestMapping
 public class VirtualThreadsController {
-    // add methods here
-    public String index() {
-        log.info("index() called");
-        return "index";
-    }   
+    private final VirtualThreadsService virtualThreadsService;
+
+    @GetMapping("/pp")
+    public String doPurePlatform() {
+        log.debug("start platform");
+        virtualThreadsService.execPlatformThread();
+        return "platform";
+    }
+
+    @GetMapping("/pv")
+    public String doPrureVirtual() {
+        log.debug("start virtual");
+        virtualThreadsService.execVirtualThread();
+        return "virtual";
+    }
 }
