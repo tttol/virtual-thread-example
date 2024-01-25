@@ -1,6 +1,6 @@
 package io.github.tttol.virtualthreadexample.service;
 
-import java.util.stream.IntStream; // Add this import statement
+import java.util.stream.IntStream;
 
 import org.springframework.stereotype.Service;
 
@@ -15,13 +15,13 @@ public class VirtualThreadsService {
         }
     }
 
-    public void execPlatformThread() {
-        IntStream.range(0, 100)
+    public void execPlatformThread(int count) {
+        IntStream.range(0, count)
         .forEach(e -> Thread.ofPlatform().start(() -> sleep()));
     }
 
-    public void execVirtualThread() {
-        IntStream.range(0, 100)
+    public void execVirtualThread(int count) {
+        IntStream.range(0, count)
         .forEach(e -> Thread.startVirtualThread(() -> sleep()));
     }
 }

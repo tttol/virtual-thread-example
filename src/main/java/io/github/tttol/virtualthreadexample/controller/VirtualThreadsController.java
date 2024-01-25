@@ -16,17 +16,17 @@ import lombok.extern.slf4j.Slf4j;
 public class VirtualThreadsController {
     private final VirtualThreadsService virtualThreadsService;
 
-    @GetMapping("/pp")
+    @GetMapping("/platform")
     public String doPurePlatform() {
         log.debug("start platform");
-        virtualThreadsService.execPlatformThread();
+        virtualThreadsService.execPlatformThread(100);
         return "platform";
     }
 
-    @GetMapping("/pv")
+    @GetMapping("/virtual")
     public String doPrureVirtual() {
         log.debug("start virtual");
-        virtualThreadsService.execVirtualThread();
+        virtualThreadsService.execVirtualThread(100);
         return "virtual";
     }
 }
