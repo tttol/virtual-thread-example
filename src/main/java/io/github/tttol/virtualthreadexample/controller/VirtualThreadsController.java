@@ -17,14 +17,14 @@ public class VirtualThreadsController {
     private final VirtualThreadsService virtualThreadsService;
 
     @GetMapping("/platform")
-    public String doPurePlatform() {
+    public String doPlatform() {
         log.debug("start platform");
         virtualThreadsService.execPlatformThread(100);
         return "platform";
     }
 
     @GetMapping("/virtual")
-    public String doPrureVirtual() {
+    public String doVirtual() {
         log.debug("start virtual");
         virtualThreadsService.execVirtualThread(100);
         return "virtual";
