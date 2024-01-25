@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class VirtualThreadsService {
     public void sleep() {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             System.out.println("Interrupted!");//適当
         }
