@@ -30,4 +30,18 @@ public class VirtualThreadsController {
         virtualThreadsService.execVirtualThread(count);
         return "virtual";
     }
+
+    @GetMapping("/platform")
+    public String doSinglePlatform() {
+        log.info("start single platform.");
+        virtualThreadsService.execSinglePlatformThread();
+        return "single platform";
+    }
+
+    @GetMapping("/virtual")
+    public String doSingleVirtual() {
+        log.info("start single virtual.");
+        virtualThreadsService.execSingleVirtualThread();
+        return "single virtual";
+    }
 }
