@@ -2,6 +2,7 @@ package io.github.tttol.virtualthreadexample.service;
 
 import java.util.stream.IntStream;
 
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
@@ -29,11 +30,14 @@ public class VirtualThreadsService {
         .forEach(e -> Thread.ofVirtual().start(() -> sleep()));
     }
 
-    public void execSinglePlatformThread() {
-        Thread.ofPlatform().start(() -> sleep());
-    }
+    @Async
+    public void sleepAsync() {
+        try {
+            log.info(" async sleeping......");
+            Thread.sleep(6000);
+        } catch (InterruptedException e) {
+            System.out.println("Interrupted!");//適当
+        }
 
-    public void execSingleVirtualThread() {
-        Thread.ofVirtual().start(() -> sleep());
     }
 }

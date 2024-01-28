@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 
 
 
+
 @RestController
 @RequiredArgsConstructor
 @Slf4j
@@ -34,12 +35,14 @@ public class VirtualThreadsController {
 
     @GetMapping("sleep")
     public String sleep() {
-        try {
-            Thread.sleep(10_000);
-        } catch (InterruptedException e) {
-            log.error("Interrupted!", e);
-        }
+        virtualThreadsService.sleep();
         return "sleep";
     }
-    
+
+    @GetMapping("async")
+    public String async() {
+        virtualThreadsService.sleepAsync();
+        return "async";
+    }
+
 }
