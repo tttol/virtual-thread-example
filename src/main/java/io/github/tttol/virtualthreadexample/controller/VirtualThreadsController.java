@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 
+
 @RestController
 @RequiredArgsConstructor
 @Slf4j
@@ -31,17 +32,14 @@ public class VirtualThreadsController {
         return "virtual";
     }
 
-    @GetMapping("/platform")
-    public String doSinglePlatform() {
-        log.info("start single platform.");
-        virtualThreadsService.execSinglePlatformThread();
-        return "single platform";
+    @GetMapping("sleep")
+    public String sleep() {
+        try {
+            Thread.sleep(10_000);
+        } catch (InterruptedException e) {
+            log.error("Interrupted!", e);
+        }
+        return "sleep";
     }
-
-    @GetMapping("/virtual")
-    public String doSingleVirtual() {
-        log.info("start single virtual.");
-        virtualThreadsService.execSingleVirtualThread();
-        return "single virtual";
-    }
+    
 }

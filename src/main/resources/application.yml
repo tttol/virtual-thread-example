@@ -1,7 +1,7 @@
 server:
     tomcat:
         threads:
-            max: 200
+            max: 100
 spring:
     threads:
         virtual:
