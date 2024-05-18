@@ -13,10 +13,12 @@ import lombok.extern.slf4j.Slf4j;
 public class VirtualThreadsService {
     public void sleep() {
         try {
-            log.info("sleeping......");
+            log.info("{} sleeping...", Thread.currentThread().getName());
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             System.out.println("Interrupted!");//適当
+        } finally {
+            log.info("{} exit", Thread.currentThread().getName());
         }
     }
 

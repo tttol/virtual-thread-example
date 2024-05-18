@@ -1,20 +1,13 @@
 # virtual-thread-example
-This is a Java project that demonstrates the usage of virtual threads.
+Virtual Threadsのサンプルコードです。
 
-## Prerequisites
-- Java Development Kit (JDK) 21
+# スレッドダンプの取り方
+プロセスIDの特定
+```bash
+jps -l
+```
 
-## Getting Started
-1. Clone the repository:
-
-    ```shell
-    git clone https://github.com/your-username/virtual-thread-example.git
-    ```
-
-2. Build the project:
-    ```shell
-    ./gradlew bootRun
-    ```
-
-## Usage
-TBD
+スレッドダンプの取得
+```bash
+jstack [PID]
+```
