@@ -22,11 +22,15 @@ public class VirtualThreadsService {
         }
     }
 
+    // Platform Threads
+    // http://localhost:8080/platform/{count}
     public void execPlatformThread(int count) {
         IntStream.range(0, count)
         .forEach(e -> Thread.ofPlatform().start(() -> sleep()));
     }
 
+    // Virtual Threads
+    // http://localhost:8080/virtual/{count}
     public void execVirtualThread(int count) {
         IntStream.range(0, count)
         .forEach(e -> Thread.ofVirtual().start(() -> sleep()));
@@ -41,5 +45,11 @@ public class VirtualThreadsService {
             System.out.println("Interrupted!");//適当
         }
 
+    }
+
+    public void task(int count) {
+        for (int i = 0; i < count; i++) {
+            log.info("task-{}, {}", i, Math.random());
+        }
     }
 }

@@ -45,4 +45,10 @@ public class VirtualThreadsController {
         return "async";
     }
 
+    @GetMapping("platform/task/{count}")
+    public String task(@PathVariable int count) {
+        virtualThreadsService.task(count);
+        return "task";
+    }
+
 }
